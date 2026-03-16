@@ -74,3 +74,30 @@ pnpm --filter @yoga/web dev   # Start only the web app
 - One concern per PR
 - Descriptive commit messages
 - Run `pnpm typecheck && pnpm lint` before marking ready
+
+## Design Workflow
+
+### Concept Phase (Agent Team)
+Run `/concept-sprint <target>` to prepare a design brief with live token and component context.
+Spawn agent team: creative-director, landing-page-strategist, ux-architect, interaction-designer, design-critic.
+Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` in settings.
+Output: design handoff document following `rules/design-handoff.md`.
+
+### Build Phase (Subagents)
+After handoff, delegate to execution subagents:
+- `figma-implementer` — component implementation from Figma or handoff
+- `ui-art-director` — visual polish and spacing refinement
+- `interaction-polisher` — motion, transitions, microinteractions
+- `storybook-maintainer` — stories for all component states
+
+### Review Phase (Read-Only Subagents)
+- `ui-reviewer` — quality, a11y, design system compliance
+- `responsive-layout-reviewer` — breakpoint audit
+- `visual-regression-reviewer` — screenshot comparison
+
+### Design Skills
+- `/concept-sprint` — prepare ideation brief with live context
+- `/landing-page-critique` — landing page section-by-section audit
+- `/app-flow-critique` — app flow UX audit
+- `/design-qa` — comprehensive design quality check
+- `/motion-budget` — animation performance audit
