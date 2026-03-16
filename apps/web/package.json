@@ -1,0 +1,33 @@
+{
+  "name": "@yoga/web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@yoga/shared": "workspace:*",
+    "@yoga/tokens": "workspace:*",
+    "@yoga/ui": "workspace:*",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "25.5.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@yoga/eslint-config": "workspace:*",
+    "@yoga/tsconfig": "workspace:*",
+    "eslint": "^9",
+    "eslint-config-next": "^15",
+    "tailwindcss": "^4",
+    "typescript": "^5.7"
+  }
+}

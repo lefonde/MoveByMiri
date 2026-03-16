@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd apps\\web && npx next dev"],
+      "port": 3000
+    },
+    {
+      "name": "storybook",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd apps\\storybook && npx storybook dev -p 6006"],
+      "port": 6006
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "references": [
+    { "path": "packages/tokens" },
+    { "path": "packages/ui" },
+    { "path": "packages/shared" },
+    { "path": "apps/web" }
+  ],
+  "files": []
+}
