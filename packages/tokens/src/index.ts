@@ -1,39 +1,51 @@
 export const colors = {
   neutral: {
-    50: '#fafafa',
-    100: '#f5f5f5',
-    200: '#e5e5e5',
-    300: '#d4d4d4',
-    400: '#a3a3a3',
-    500: '#737373',
-    600: '#525252',
-    700: '#404040',
-    800: '#262626',
-    900: '#171717',
-    950: '#0a0a0a',
+    50: '#FAF8F5',
+    100: '#F5F0EB',
+    200: '#E8E0D8',
+    300: '#D4C9BD',
+    400: '#B5A899',
+    500: '#968A7B',
+    600: '#756A5E',
+    700: '#574E44',
+    800: '#3A3632',
+    900: '#2A2623',
+    950: '#1A1816',
   },
   primary: {
-    50: '#eff6ff',
-    100: '#dbeafe',
-    200: '#bfdbfe',
-    300: '#93c5fd',
-    400: '#60a5fa',
-    500: '#3b82f6',
-    600: '#2563eb',
-    700: '#1d4ed8',
-    800: '#1e40af',
-    900: '#1e3a8a',
-    950: '#172554',
+    50: '#F4F6F0',
+    100: '#E6EBD9',
+    200: '#CDDAB5',
+    300: '#AFC48B',
+    400: '#8AAA63',
+    500: '#6B8F44',
+    600: '#556B2F',
+    700: '#455825',
+    800: '#374520',
+    900: '#2D3A1B',
+    950: '#172010',
+  },
+  accent: {
+    50: '#FBF3EF',
+    100: '#F5E1D8',
+    200: '#ECC7B5',
+    300: '#DFA88C',
+    400: '#D08B66',
+    500: '#C27E60',
+    600: '#A86744',
+    700: '#8B5238',
+    800: '#6E4130',
+    900: '#5A3628',
   },
   error: {
-    50: '#fef2f2',
-    500: '#ef4444',
-    700: '#b91c1c',
+    50: '#FEF2F2',
+    500: '#DC4A4A',
+    700: '#B42525',
   },
   success: {
-    50: '#f0fdf4',
-    500: '#22c55e',
-    700: '#15803d',
+    50: '#F0FAF0',
+    500: '#5A9A5A',
+    700: '#3D7A3D',
   },
 } as const
 
@@ -51,6 +63,10 @@ export const spacing = {
   16: '4rem',
   20: '5rem',
   24: '6rem',
+  28: '7rem',
+  32: '8rem',
+  36: '9rem',
+  40: '10rem',
 } as const
 
 export const fontSize = {
@@ -62,9 +78,17 @@ export const fontSize = {
   '2xl': ['1.5rem', { lineHeight: '2rem' }],
   '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
   '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+  '5xl': ['3rem', { lineHeight: '3.25rem' }],
+  '6xl': ['4rem', { lineHeight: '4.25rem' }],
+  '7xl': ['5rem', { lineHeight: '5.25rem' }],
+  // Fluid display scale — for hero wordmark and editorial headings
+  display: ['clamp(3rem, 8vw, 6.5rem)', { lineHeight: '1.05' }],
+  // Fluid numeric scale — for pricing declarations in Station 6
+  numeric: ['clamp(3.5rem, 7vw, 5rem)', { lineHeight: '1.0' }],
 } as const
 
 export const fontFamily = {
+  serif: ['Cormorant Garamond', 'Garamond', 'Georgia', 'serif'],
   sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
   mono: ['JetBrains Mono', 'Menlo', 'monospace'],
 } as const
@@ -84,6 +108,7 @@ export const radii = {
   lg: '0.5rem',
   xl: '0.75rem',
   '2xl': '1rem',
+  '3xl': '2rem',
   full: '9999px',
 } as const
 
