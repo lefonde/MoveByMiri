@@ -12,11 +12,16 @@
     "format:check": "prettier --check ."
   },
   "devDependencies": {
+    "next": "^15",
     "prettier": "^3",
     "turbo": "^2",
     "typescript": "^5.7"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
