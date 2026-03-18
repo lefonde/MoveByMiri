@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm --filter @yoga/web build && cp -r ../../apps/web/.next .next",
-  "outputDirectory": ".next",
+  "buildCommand": "pnpm --filter @yoga/web build && cp -r ../../apps/web/out ./out",
+  "outputDirectory": "out",
   "installCommand": "pnpm install",
   "framework": "nextjs"
 }
