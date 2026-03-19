@@ -4,66 +4,44 @@ export type FooterProps = {
 
 export function Footer({ className = '' }: FooterProps) {
   return (
-    <footer
-      className={`bg-[#3A3632] px-4 py-12 text-[#FAF8F5] sm:px-6 sm:py-16 lg:px-8 ${className}`}
-    >
-      <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {/* Contact */}
-        <div className="space-y-3">
-          <h3 className="font-serif text-lg font-medium tracking-wider">MOOV by Miri</h3>
-          <address className="space-y-1 font-sans text-sm not-italic text-[#E8E0D8]">
-            <p>Wesley Hills, NY</p>
-            <p>
-              <a
-                href="tel:9296273163"
-                className="transition-colors duration-200 hover:text-white hover:underline"
-              >
-                929-627-3163
-              </a>
-            </p>
-            <p>
-              <a
-                href="https://instagram.com/moovbymiri"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors duration-200 hover:text-white hover:underline"
-              >
-                @moovbymiri
-              </a>
-            </p>
-          </address>
-        </div>
-
-        {/* Legal */}
-        <div className="space-y-3">
-          <h3 className="font-serif text-lg font-medium tracking-wider">Legal</h3>
-          <ul className="space-y-1 font-sans text-sm text-[#E8E0D8]">
-            <li>
-              <a
-                href="/privacy"
-                className="transition-colors duration-200 hover:text-white hover:underline"
-              >
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a
-                href="/terms"
-                className="transition-colors duration-200 hover:text-white hover:underline"
-              >
-                Terms of Service
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Copyright */}
-        <div className="flex items-end sm:col-span-2 lg:col-span-1">
-          <p className="font-sans text-sm text-[#B5A899]">
-            &copy; 2026 MOOV by Miri. All rights reserved.
-          </p>
-        </div>
-      </div>
+    <footer className={`bg-[#1C1512] px-6 py-8 text-center ${className}`}>
+      {/* flex-wrap ensures no single-line overflow at 375px */}
+      <p
+        className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-sans text-[#FAF8F5]/60"
+        style={{ fontSize: '0.7rem', letterSpacing: '0.1em' }}
+      >
+        <span>MOOV by Miri</span>
+        <span aria-hidden="true">·</span>
+        <span>Wesley Hills, NY</span>
+        <span aria-hidden="true">·</span>
+        <a
+          href="tel:9296273163"
+          className="transition-colors duration-150 hover:text-[#FAF8F5]/90 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#FAF8F5]/60"
+        >
+          929-627-3163
+        </a>
+        <span aria-hidden="true">·</span>
+        <a
+          href="https://instagram.com/moovbymiri"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="MOOV by Miri on Instagram (opens in new tab)"
+          className="transition-colors duration-150 hover:text-[#FAF8F5]/90 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#FAF8F5]/60"
+        >
+          @moovbymiri
+        </a>
+        <span aria-hidden="true">·</span>
+        <span>24-hr cancellation policy</span>
+        <span aria-hidden="true">·</span>
+        <a
+          href="/privacy"
+          className="transition-colors duration-150 hover:text-[#FAF8F5]/90 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#FAF8F5]/60"
+        >
+          Privacy
+        </a>
+        <span aria-hidden="true">·</span>
+        <span>© 2025 MOOV by Miri</span>
+      </p>
     </footer>
   )
 }

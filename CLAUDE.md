@@ -36,7 +36,7 @@ pnpm --filter @yoga/web dev   # Start only the web app
 - **Types**: prefer `type` over `interface` unless extending. Derive TS types from Zod schemas.
 - **Validation**: Zod for all runtime validation
 - **Styling**: Tailwind CSS utility classes. All values from @yoga/tokens — no magic numbers.
-- **Imports order**: react → next → external libs → @yoga/* packages → relative
+- **Imports order**: react → next → external libs → @yoga/\* packages → relative
 - **No barrel re-exports** beyond package entry points (tree-shaking)
 
 ## File Naming
@@ -77,27 +77,10 @@ pnpm --filter @yoga/web dev   # Start only the web app
 
 ## Design Workflow
 
-### Concept Phase (Agent Team)
-Run `/concept-sprint <target>` to prepare a design brief with live token and component context.
-Spawn agent team: creative-director, landing-page-strategist, ux-architect, interaction-designer, design-critic.
-Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` in settings.
-Output: design handoff document following `rules/design-handoff.md`.
+Follow `rules/design-workflow.md` for the complete 6-phase design process with 3 user gates.
 
-### Build Phase (Subagents)
-After handoff, delegate to execution subagents:
-- `figma-implementer` — component implementation from Figma or handoff
-- `ui-art-director` — visual polish and spacing refinement
-- `interaction-polisher` — motion, transitions, microinteractions
-- `storybook-maintainer` — stories for all component states
+**Quick reference:** Research → Direction Review → Concept → Concept Review → Build → Visual Check-in → Review → Assets
 
-### Review Phase (Read-Only Subagents)
-- `ui-reviewer` — quality, a11y, design system compliance
-- `responsive-layout-reviewer` — breakpoint audit
-- `visual-regression-reviewer` — screenshot comparison
+**MCP tools:** Google Stitch (visual exploration), Nano Banana 2 (image generation), 21st.dev Magic (component patterns), Figma (design extraction), Playwright (visual regression)
 
-### Design Skills
-- `/concept-sprint` — prepare ideation brief with live context
-- `/landing-page-critique` — landing page section-by-section audit
-- `/app-flow-critique` — app flow UX audit
-- `/design-qa` — comprehensive design quality check
-- `/motion-budget` — animation performance audit
+**Skills:** `/concept-sprint`, `/ui-ux-pro-max`, `/design-qa`, `/landing-page-critique`, `/app-flow-critique`, `/motion-budget`, `/ui-polish`, `/implement-from-figma`, `/write-story`, `/a11y-review`, `/perf-pass`

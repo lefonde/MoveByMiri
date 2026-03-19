@@ -8,25 +8,28 @@ export type TrustBarProps = {
 export function TrustBar({ headline, subline, ctaHref, className = '' }: TrustBarProps) {
   return (
     <div
-      className={`bg-[#2A2623] px-4 py-4 sm:px-6 sm:py-5 ${className}`}
+      className={`bg-[#1A2E1A] px-6 py-4 text-center ${className}`}
       role="complementary"
       aria-label="Availability"
     >
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="font-sans text-sm font-medium text-[#FAF8F5] sm:text-base">{headline}</p>
+      {/* flex-col on mobile (clean two-line stack), flex-row on sm+ (single band) */}
+      <p
+        className="flex flex-col items-center gap-1 font-sans uppercase tracking-[0.14em] sm:flex-row sm:justify-center sm:gap-3"
+        style={{ fontSize: '0.75rem' }}
+      >
+        {/* Headline uses cream — #C27E60 at 12px fails 4.5:1 on this dark bg */}
+        <strong className="font-semibold text-[#FAF8F5]">{headline}</strong>
         {ctaHref ? (
-          <p className="mt-1 font-sans text-xs text-[#D4C9BD] sm:text-sm">
-            <a
-              href={ctaHref}
-              className="link-underline transition-colors duration-150 hover:text-[#FAF8F5]"
-            >
-              {subline}
-            </a>
-          </p>
+          <a
+            href={ctaHref}
+            className="text-[#FAF8F5]/75 transition-colors duration-150 hover:text-[#FAF8F5] focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#FAF8F5]/60"
+          >
+            {subline}
+          </a>
         ) : (
-          <p className="mt-1 font-sans text-xs text-[#D4C9BD] sm:text-sm">{subline}</p>
+          <span className="text-[#FAF8F5]/75">{subline}</span>
         )}
-      </div>
+      </p>
     </div>
   )
 }

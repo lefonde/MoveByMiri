@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOOV — Direction D: ARCHI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --plaster: #f2ebe0;
+        --sand: #e9e0d4;
+        --bark: #32271e;
+        --umber: #7a4f38;
+        --umber-dk: #5c3a28;
+        --terra: #c27e60;
+        --charcoal: #2a2420;
+        --stone: #b8ac9e;
+        --mid: #6e5e50;
+        --cream: #faf7f2;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--plaster);
+        color: var(--bark);
+        overflow-x: hidden;
+      }
+
+      .badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 999;
+        background: rgba(50, 39, 30, 0.88);
+        backdrop-filter: blur(6px);
+        color: var(--plaster);
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 0.45rem 1rem;
+        border-radius: 99px;
+        border: 1px solid rgba(242, 235, 224, 0.15);
+      }
+
+      /* HERO — 2/3 + 1/3 split */
+      .hero {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        height: 100vh;
+        min-height: 640px;
+        overflow: hidden;
+      }
+      .hero-photo {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          160deg,
+          #3a2518 0%,
+          #6b4a30 22%,
+          #a07850 50%,
+          #c49870 75%,
+          #dec090 100%
+        );
+      }
+      .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+      .hero-photo-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 60%, rgba(242, 235, 224, 0.12) 100%);
+      }
+      .hero-panel {
+        background: var(--plaster);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 4rem 3.5rem;
+        border-left: 1px solid rgba(50, 39, 30, 0.1);
+        position: relative;
+      }
+      .hero-panel::before {
+        content: '01';
+        position: absolute;
+        top: 2.5rem;
+        left: 3.5rem;
+        font-size: 0.55rem;
+        font-weight: 300;
+        letter-spacing: 0.28em;
+        color: var(--stone);
+      }
+      .hero-panel::after {
+        content: '— ARRIVAL';
+        position: absolute;
+        top: 2.5rem;
+        left: 5.5rem;
+        font-size: 0.55rem;
+        font-weight: 300;
+        letter-spacing: 0.28em;
+        color: var(--stone);
+      }
+      .hero-locale {
+        font-size: 0.58rem;
+        font-weight: 400;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--stone);
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards 0.3s;
+      }
+      .hero-wordmark {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(3.5rem, 6vw, 6rem);
+        font-weight: 300;
+        color: var(--bark);
+        letter-spacing: 0.22em;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        opacity: 0;
+        animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.1s;
+      }
+      .hero-tagline {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--mid);
+        letter-spacing: 0.04em;
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards 0.6s;
+      }
+      .hero-rule {
+        width: 100%;
+        height: 1px;
+        background: rgba(50, 39, 30, 0.15);
+        margin-bottom: 2.5rem;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: lineIn 0.8s ease forwards 0.9s;
+      }
+      .hero-cta {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--cream);
+        background: var(--umber);
+        padding: 0.875rem 1.75rem;
+        text-decoration: none;
+        opacity: 0;
+        animation: fadeUp 0.6s ease forwards 1.3s;
+        transition: background 0.2s;
+      }
+      .hero-cta:hover {
+        background: var(--umber-dk);
+      }
+      .hero-phone {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.58rem;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        color: var(--stone);
+        text-decoration: none;
+        opacity: 0;
+        animation: fadeUp 0.5s ease forwards 1.6s;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes lineIn {
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      /* TRUST BAR */
+      .trust {
+        background: var(--charcoal);
+        padding: 1.1rem 2rem 1.1rem 3.5rem;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        border-bottom: 1px solid rgba(242, 235, 224, 0.06);
+      }
+      .trust-num {
+        font-size: 0.55rem;
+        font-weight: 300;
+        letter-spacing: 0.28em;
+        color: var(--stone);
+      }
+      .trust p {
+        font-size: 0.72rem;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(242, 235, 224, 0.68);
+      }
+      .trust strong {
+        color: var(--terra);
+        font-weight: 400;
+      }
+
+      /* SECTION WRAPPER */
+      .section {
+        position: relative;
+        padding: 8rem 3.5rem 8rem calc(3.5rem + 80px);
+      }
+      .section-inner {
+        max-width: 900px;
+      }
+      .section-num {
+        position: absolute;
+        left: 3.5rem;
+        top: 8rem;
+        font-size: 0.55rem;
+        font-weight: 300;
+        letter-spacing: 0.28em;
+        color: var(--stone);
+      }
+      .section-name {
+        position: absolute;
+        left: 3.5rem;
+        top: calc(8rem + 1.25rem);
+        font-size: 0.55rem;
+        font-weight: 300;
+        letter-spacing: 0.28em;
+        color: var(--stone);
+        writing-mode: initial;
+      }
+      .section-line {
+        position: absolute;
+        left: calc(3.5rem + 56px);
+        top: 8rem;
+        bottom: 8rem;
+        width: 1px;
+        background: rgba(50, 39, 30, 0.1);
+      }
+      .ew {
+        font-size: 0.58rem;
+        font-weight: 400;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--bark);
+        line-height: 1.18;
+        margin-bottom: 1.75rem;
+      }
+      .body-text {
+        font-size: 1rem;
+        line-height: 1.88;
+        color: var(--mid);
+        max-width: 560px;
+      }
+
+      /* HONEST MIRROR */
+      .mirror {
+        background: var(--sand);
+      }
+      .mirror h2 {
+        color: var(--bark);
+      }
+
+      /* THRESHOLD */
+      .threshold {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        min-height: 580px;
+      }
+      .thr-photo {
+        background: linear-gradient(140deg, #3a2a1c 0%, #7b5242 40%, #a07858 70%, #c8ae82 100%);
+        overflow: hidden;
+        position: relative;
+      }
+      .thr-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .thr-text {
+        background: var(--plaster);
+        padding: 5rem 4rem 5rem calc(4rem + 80px);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .thr-text .section-num,
+      .thr-text .section-line {
+        position: absolute;
+      }
+      .thr-text h2 {
+        margin-bottom: 1.5rem;
+      }
+      .thr-text .body-text {
+        margin-bottom: 2.5rem;
+      }
+      .btn-u {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--cream);
+        background: var(--umber);
+        padding: 0.875rem 1.75rem;
+        text-decoration: none;
+        align-self: flex-start;
+        transition: background 0.2s;
+      }
+      .btn-u:hover {
+        background: var(--umber-dk);
+      }
+
+      /* VOICES */
+      .voices {
+        background: var(--charcoal);
+        padding: 8rem 3.5rem 8rem calc(3.5rem + 80px);
+        position: relative;
+      }
+      .voices .section-line {
+        position: absolute;
+        left: calc(3.5rem + 56px);
+        top: 8rem;
+        bottom: 8rem;
+        width: 1px;
+        background: rgba(242, 235, 224, 0.08);
+      }
+      .voices .ew {
+        color: rgba(194, 126, 96, 0.8);
+      }
+      .voices h2 {
+        color: var(--plaster);
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      }
+      .tstack {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-width: 720px;
+        margin-top: 3rem;
+      }
+      .titem {
+        border-top: 1px solid rgba(242, 235, 224, 0.1);
+        padding: 2rem 0;
+      }
+      .titem q {
+        display: block;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.15rem;
+        font-style: italic;
+        color: rgba(242, 235, 224, 0.82);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+      .titem cite {
+        font-size: 0.6rem;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--terra);
+        font-style: normal;
+      }
+
+      /* SPACE */
+      .space-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 440px;
+      }
+      .space-photo {
+        background: linear-gradient(160deg, #3a2518 0%, #7b5040 35%, #a07858 65%, #c8ae82 100%);
+        overflow: hidden;
+        position: relative;
+      }
+      .space-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .space-info {
+        background: var(--sand);
+        padding: 5rem 3.5rem 5rem calc(3.5rem + 80px);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .space-info .section-line {
+        position: absolute;
+        left: calc(3.5rem + 56px);
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: rgba(50, 39, 30, 0.1);
+      }
+      .space-info .ew {
+        margin-bottom: 2rem;
+      }
+      .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 1.25rem;
+      }
+      .info-label {
+        font-size: 0.58rem;
+        font-weight: 400;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--stone);
+      }
+      .info-val {
+        font-size: 0.95rem;
+        font-weight: 300;
+        color: var(--bark);
+        line-height: 1.5;
+      }
+
+      /* PRICING */
+      .pricing {
+        background: var(--cream);
+        padding: 8rem 3.5rem 8rem calc(3.5rem + 80px);
+        position: relative;
+      }
+      .pricing .section-line {
+        position: absolute;
+        left: calc(3.5rem + 56px);
+        top: 8rem;
+        bottom: 8rem;
+        width: 1px;
+        background: rgba(50, 39, 30, 0.1);
+      }
+      .pgrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border: 1px solid rgba(50, 39, 30, 0.12);
+        margin-top: 3.5rem;
+        max-width: 880px;
+      }
+      .pcard {
+        padding: 3rem 2.5rem;
+        border-right: 1px solid rgba(50, 39, 30, 0.12);
+      }
+      .pcard:last-child {
+        border-right: none;
+      }
+      .pcard.pop {
+        background: var(--umber);
+      }
+      .plabel {
+        font-size: 0.58rem;
+        font-weight: 400;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1.5rem;
+      }
+      .pcard.pop .plabel {
+        color: rgba(194, 126, 96, 0.85);
+      }
+      .pamount {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 5rem;
+        font-weight: 300;
+        color: var(--bark);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+      .pamount sup {
+        font-size: 1.5rem;
+        vertical-align: super;
+      }
+      .pcard.pop .pamount {
+        color: var(--plaster);
+      }
+      .pdesc {
+        font-size: 0.825rem;
+        line-height: 1.7;
+        color: var(--mid);
+        margin-bottom: 2rem;
+      }
+      .pcard.pop .pdesc {
+        color: rgba(242, 235, 224, 0.6);
+      }
+      .pcta {
+        display: block;
+        font-size: 0.62rem;
+        font-weight: 400;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-align: center;
+        color: var(--cream);
+        background: var(--umber);
+        padding: 0.8rem;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .pcta:hover {
+        background: var(--umber-dk);
+      }
+      .pcard.pop .pcta {
+        background: var(--plaster);
+        color: var(--umber);
+      }
+
+      /* DOOR */
+      .door {
+        background: linear-gradient(155deg, var(--umber) 0%, var(--umber-dk) 100%);
+        padding: 9rem 3.5rem 9rem calc(3.5rem + 80px);
+        position: relative;
+      }
+      .door .section-line {
+        position: absolute;
+        left: calc(3.5rem + 56px);
+        top: 9rem;
+        bottom: 9rem;
+        width: 1px;
+        background: rgba(242, 235, 224, 0.15);
+      }
+      .door h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--plaster);
+        margin-bottom: 1.25rem;
+        letter-spacing: 0.02em;
+      }
+      .door p {
+        font-size: 0.9rem;
+        line-height: 1.78;
+        color: rgba(242, 235, 224, 0.62);
+        max-width: 460px;
+        margin-bottom: 2.75rem;
+      }
+      .btn-plaster {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--bark);
+        background: var(--plaster);
+        padding: 1rem 2.5rem;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .btn-plaster:hover {
+        opacity: 0.85;
+      }
+
+      footer {
+        background: var(--charcoal);
+        padding: 2rem 3.5rem;
+        border-top: 1px solid rgba(242, 235, 224, 0.07);
+      }
+      footer p {
+        font-size: 0.65rem;
+        letter-spacing: 0.14em;
+        color: rgba(242, 235, 224, 0.28);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="badge">D — Archi</div>
+
+    <!-- HERO: 2/3 photo + 1/3 panel -->
+    <section class="hero">
+      <div class="hero-photo">
+        <img src="../images/studio-full-view.jpg" alt="" onerror="this.style.display = 'none'" />
+        <div class="hero-photo-overlay"></div>
+      </div>
+      <div class="hero-panel">
+        <p class="hero-locale">Wesley Hills, NY</p>
+        <div class="hero-wordmark">MOOV</div>
+        <p class="hero-tagline">Boutique pilates &amp; strength</p>
+        <div class="hero-rule"></div>
+        <a href="sms:9296273163" class="hero-cta">Text Miri to Reserve — $25</a>
+        <a href="tel:9296273163" class="hero-phone">929-627-3163</a>
+      </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust">
+      <span class="trust-num">02</span>
+      <p><strong>3 spots open this week.</strong> &nbsp; Text Miri to hold yours — 929-627-3163</p>
+    </div>
+
+    <!-- HONEST MIRROR -->
+    <section class="section mirror">
+      <div class="section-num">03</div>
+      <div class="section-line"></div>
+      <div class="section-inner">
+        <p class="ew">Honest Mirror</p>
+        <h2>"You've tried<br />the alternatives."</h2>
+        <p class="body-text">
+          The big gym where no one knows you. The boutique where you can't get a spot. The app that
+          doesn't move your body the way you need it to. You already know what doesn't work. This is
+          what does.
+        </p>
+      </div>
+    </section>
+
+    <!-- THRESHOLD -->
+    <section class="threshold">
+      <div class="thr-photo">
+        <img src="../images/studio-arch-niche.jpg" alt="" onerror="this.style.display = 'none'" />
+      </div>
+      <div class="thr-text">
+        <div class="section-num" style="left: 3rem; top: 4rem">04</div>
+        <div class="section-line" style="left: calc(3rem + 56px); top: 4rem; bottom: 4rem"></div>
+        <div style="padding-left: 80px">
+          <p class="ew">Threshold</p>
+          <h2>10 students per class.<br />Miri knows your name.</h2>
+          <p class="body-text" style="margin-bottom: 2.5rem">
+            This isn't a drop-in gym. It's a studio built around you. Every class is capped. Every
+            student is seen.
+          </p>
+          <a href="sms:9296273163" class="btn-u">Reserve Your Spot — $25</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOICES -->
+    <section class="voices">
+      <div class="section-line"></div>
+      <div style="padding-left: 0">
+        <span
+          style="
+            font-size: 0.55rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            color: var(--stone);
+            display: block;
+            margin-bottom: 0.5rem;
+          "
+          >05</span
+        >
+        <p class="ew">Voices</p>
+        <h2>"What members say."</h2>
+        <div class="tstack">
+          <div class="titem">
+            <q
+              >I've tried every boutique studio in Rockland. MOOV is the only one where I feel
+              genuinely known. Miri remembers everything.</q
+            ><cite>Sarah M.</cite>
+          </div>
+          <div class="titem">
+            <q
+              >Three months in and my posture is transformed. Small classes mean Miri actually
+              corrects your form. It matters.</q
+            ><cite>Danielle K.</cite>
+          </div>
+          <div class="titem">
+            <q
+              >I was nervous about pilates. Miri made me feel capable from day one. I've been coming
+              every week for a year.</q
+            ><cite>Rachel T.</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SPACE -->
+    <div class="space-grid">
+      <div class="space-photo">
+        <img src="../images/studio-full-view.jpg" alt="" onerror="this.style.display = 'none'" />
+      </div>
+      <div class="space-info">
+        <div class="section-line"></div>
+        <span
+          style="
+            font-size: 0.55rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            color: var(--stone);
+            display: block;
+            margin-bottom: 0.5rem;
+          "
+          >06</span
+        >
+        <p class="ew">The Space</p>
+        <div class="info-item">
+          <span class="info-label">Address</span
+          ><span class="info-val">46 Viola Rd, Wesley Hills, NY 10977</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Contact</span><span class="info-val">929-627-3163</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Policy</span
+          ><span class="info-val">24-hr cancellation · Payment holds your spot</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Drop-in</span
+          ><span class="info-val">Welcome — text Miri first</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <section class="pricing">
+      <div class="section-line"></div>
+      <span
+        style="
+          font-size: 0.55rem;
+          font-weight: 300;
+          letter-spacing: 0.28em;
+          color: var(--stone);
+          display: block;
+          margin-bottom: 0.5rem;
+        "
+        >08</span
+      >
+      <p class="ew">The Price</p>
+      <h2
+        style="
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 300;
+          color: var(--bark);
+          margin-bottom: 0;
+        "
+      >
+        Simple, honest pricing.
+      </h2>
+      <div class="pgrid">
+        <div class="pcard">
+          <p class="plabel">Start here</p>
+          <div class="pamount"><sup>$</sup>25</div>
+          <p class="pdesc">Single class. No commitment.</p>
+          <a href="sms:9296273163" class="pcta">Reserve a Single</a>
+        </div>
+        <div class="pcard pop">
+          <p class="plabel">Most popular</p>
+          <div class="pamount"><sup>$</sup>115</div>
+          <p class="pdesc">Five classes, valid 2 months.</p>
+          <a href="sms:9296273163" class="pcta">Get Five Classes</a>
+        </div>
+        <div class="pcard">
+          <p class="plabel">Best value</p>
+          <div class="pamount"><sup>$</sup>200</div>
+          <p class="pdesc">Ten classes, valid 3 months.</p>
+          <a href="sms:9296273163" class="pcta">Get Ten Classes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE DOOR -->
+    <section class="door">
+      <div class="section-line"></div>
+      <span
+        style="
+          font-size: 0.55rem;
+          font-weight: 300;
+          letter-spacing: 0.28em;
+          color: rgba(242, 235, 224, 0.35);
+          display: block;
+          margin-bottom: 3rem;
+        "
+        >10 — The Door</span
+      >
+      <h2>"This week has a few spots left."</h2>
+      <p>Text Miri. She'll tell you what's open and hold it while you decide.</p>
+      <a href="sms:9296273163" class="btn-plaster">Text to Reserve — $25</a>
+    </section>
+
+    <footer>
+      <p>
+        MOOV by Miri &nbsp;·&nbsp; Wesley Hills, NY &nbsp;·&nbsp; 929-627-3163 &nbsp;·&nbsp;
+        @moovbymiri &nbsp;·&nbsp; 24-hr cancellation policy
+      </p>
+    </footer>
+  </body>
+</html>

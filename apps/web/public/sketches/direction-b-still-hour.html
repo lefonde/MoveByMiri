@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOOV — Direction B: THE STILL HOUR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --chalk: #faf9f6;
+        --near-black: #0f0d0c;
+        --warm-black: #1c1917;
+        --ash: #8a7e73;
+        --terra: #a0593a;
+        --terra-lt: #c4714e;
+        --offwhite: #f0ece6;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--chalk);
+        color: var(--warm-black);
+        overflow-x: hidden;
+      }
+
+      .badge {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 999;
+        background: rgba(15, 13, 12, 0.9);
+        backdrop-filter: blur(6px);
+        color: var(--offwhite);
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 0.45rem 1rem;
+        border-radius: 99px;
+        border: 1px solid rgba(240, 236, 230, 0.12);
+      }
+
+      /* HERO — full dark, cycling words */
+      .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 640px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--near-black);
+        overflow: hidden;
+      }
+      .hero-word {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(5.5rem, 16vw, 11rem);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--offwhite);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        position: absolute;
+        opacity: 0;
+        transition: none;
+      }
+      .hero-word.active {
+        animation: wordIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      .hero-word.exit {
+        animation: wordOut 0.5s ease forwards;
+      }
+      .hero-bottom {
+        position: absolute;
+        bottom: 3rem;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .hero-tag {
+        font-size: 0.65rem;
+        font-weight: 400;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(240, 236, 230, 0.4);
+      }
+      .hero-arrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--terra-lt);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .hero-arrow:hover {
+        color: var(--offwhite);
+      }
+      .hero-arrow::after {
+        content: '→';
+        font-style: normal;
+      }
+
+      @keyframes wordIn {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes wordOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+      }
+
+      /* TRUST BAR */
+      .trust {
+        background: #1a1614;
+        padding: 1.1rem 2rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(240, 236, 230, 0.06);
+      }
+      .trust p {
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(240, 236, 230, 0.6);
+      }
+      .trust strong {
+        color: var(--terra-lt);
+        font-weight: 500;
+      }
+
+      /* FULL-BLEED PHOTO DIVIDER */
+      .photo-divide {
+        height: 55vh;
+        min-height: 360px;
+        overflow: hidden;
+        background: linear-gradient(160deg, #3a2518 0%, #6b4a32 30%, #96704a 60%, #c4a078 100%);
+        position: relative;
+      }
+      .photo-divide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .photo-caption {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 3rem;
+        right: 3rem;
+      }
+      .photo-caption p {
+        font-size: 0.65rem;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* SECTIONS */
+      .section {
+        padding: 7rem 2rem;
+      }
+      .inner {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .ew {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1.5rem;
+      }
+
+      /* TEXT SECTIONS */
+      .section h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--warm-black);
+        line-height: 1.2;
+        margin-bottom: 1.75rem;
+      }
+      .section p {
+        font-size: 0.9375rem;
+        line-height: 1.9;
+        color: var(--ash);
+        margin-bottom: 1.5rem;
+      }
+
+      /* VOICES */
+      .voices {
+        background: var(--near-black);
+        padding: 8rem 2rem;
+      }
+      .voices .inner {
+        max-width: 720px;
+      }
+      .voices .ew {
+        color: rgba(160, 89, 58, 0.9);
+      }
+      .voices h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--offwhite);
+        margin-bottom: 3.5rem;
+      }
+      .tstack {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .titem {
+        border-top: 1px solid rgba(240, 236, 230, 0.1);
+        padding-top: 2rem;
+      }
+      .titem q {
+        display: block;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.2rem;
+        font-style: italic;
+        color: rgba(240, 236, 230, 0.82);
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+      .titem cite {
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--terra);
+        font-style: normal;
+      }
+
+      /* PRICING */
+      .pricing {
+        background: var(--chalk);
+        padding: 8rem 2rem;
+        border-top: 1px solid rgba(28, 25, 23, 0.08);
+      }
+      .pricing h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 300;
+        color: var(--warm-black);
+        margin-bottom: 4rem;
+      }
+      .pgrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(28, 25, 23, 0.1);
+        border: 1px solid rgba(28, 25, 23, 0.1);
+      }
+      .pcard {
+        background: var(--chalk);
+        padding: 3rem 2.5rem;
+      }
+      .pcard.pop {
+        background: var(--near-black);
+      }
+      .pcard.pop .plabel,
+      .pcard.pop .pamount,
+      .pcard.pop .pdesc {
+        color: var(--offwhite);
+      }
+      .pcard.pop .pdesc {
+        color: rgba(240, 236, 230, 0.55);
+      }
+      .plabel {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 1.5rem;
+      }
+      .pamount {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 5rem;
+        font-weight: 300;
+        color: var(--warm-black);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+      .pamount sup {
+        font-size: 1.5rem;
+        vertical-align: super;
+      }
+      .pdesc {
+        font-size: 0.875rem;
+        line-height: 1.65;
+        color: var(--ash);
+        margin-bottom: 2.5rem;
+      }
+      .pcta {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        text-align: center;
+        color: #fff;
+        background: var(--terra);
+        padding: 0.85rem;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .pcta:hover {
+        background: var(--terra-lt);
+      }
+      .pcard.pop .pcta {
+        background: var(--terra);
+        color: #fff;
+      }
+
+      /* DOOR */
+      .door {
+        background: var(--near-black);
+        padding: 10rem 2rem;
+        text-align: center;
+      }
+      .door h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 300;
+        font-style: italic;
+        color: var(--offwhite);
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.01em;
+      }
+      .door p {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        color: rgba(240, 236, 230, 0.5);
+        max-width: 440px;
+        margin: 0 auto 3rem;
+      }
+      .btn-terra {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #fff;
+        background: var(--terra);
+        padding: 1.1rem 3rem;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .btn-terra:hover {
+        background: var(--terra-lt);
+      }
+      .door-phone {
+        display: block;
+        margin-top: 1.5rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(240, 236, 230, 0.35);
+        text-decoration: none;
+      }
+
+      footer {
+        background: #080706;
+        padding: 2rem;
+        text-align: center;
+      }
+      footer p {
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        color: rgba(240, 236, 230, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="badge">B — The Still Hour</div>
+
+    <section class="hero" id="hero">
+      <div class="hero-word active" id="w0">Pilates.</div>
+      <div class="hero-word" id="w1">Strength.</div>
+      <div class="hero-word" id="w2">Movement.</div>
+      <div class="hero-bottom">
+        <p class="hero-tag">MOOV by Miri &nbsp;·&nbsp; Wesley Hills, NY</p>
+        <a href="sms:9296273163" class="hero-arrow">Text Miri to Reserve — $25</a>
+      </div>
+    </section>
+
+    <div class="trust">
+      <p><strong>3 spots open this week.</strong> &nbsp; Text Miri to hold yours — 929-627-3163</p>
+    </div>
+
+    <section class="section">
+      <div class="inner">
+        <p class="ew">03 — Honest Mirror</p>
+        <h2>"You've tried<br />the alternatives."</h2>
+        <p>
+          The big gym where no one knows you. The boutique where you can't get a spot. The app that
+          doesn't move your body the way you need it to.
+        </p>
+        <p>You already know what doesn't work. This is what does.</p>
+      </div>
+    </section>
+
+    <div class="photo-divide">
+      <img src="../images/studio-full-view.jpg" alt="" onerror="this.style.display = 'none'" />
+      <div class="photo-caption"><p>MOOV Studio — Wesley Hills, NY</p></div>
+    </div>
+
+    <section class="section">
+      <div class="inner">
+        <p class="ew">04 — Threshold</p>
+        <h2>10 students per class.<br />Miri knows your name.</h2>
+        <p>
+          This isn't a drop-in gym. It's a studio built around you. Every class is capped. Every
+          student is seen. You're not a member number — you're here because you chose to be.
+        </p>
+      </div>
+    </section>
+
+    <section class="voices">
+      <div class="inner">
+        <p class="ew">05 — Voices</p>
+        <h2>"What members say."</h2>
+        <div class="tstack">
+          <div class="titem">
+            <q
+              >I've tried every boutique studio in Rockland. MOOV is the only one where I feel
+              genuinely known. Miri remembers everything.</q
+            ><cite>Sarah M.</cite>
+          </div>
+          <div class="titem">
+            <q
+              >Three months in and my posture is transformed. The small class size means Miri
+              actually corrects your form. It matters.</q
+            ><cite>Danielle K.</cite>
+          </div>
+          <div class="titem">
+            <q
+              >I was nervous about pilates. Miri made me feel capable from day one. I've been coming
+              every week for a year.</q
+            ><cite>Rachel T.</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <div class="inner" style="max-width: 1100px">
+        <p class="ew">08 — The Price</p>
+        <h2>Simple pricing.</h2>
+        <div class="pgrid">
+          <div class="pcard">
+            <p class="plabel">Start here</p>
+            <div class="pamount"><sup>$</sup>25</div>
+            <p class="pdesc">Single class. No commitment. Come once and see.</p>
+            <a href="sms:9296273163" class="pcta">Reserve a Single</a>
+          </div>
+          <div class="pcard pop">
+            <p class="plabel">Most popular</p>
+            <div class="pamount"><sup>$</sup>115</div>
+            <p class="pdesc">Five classes, valid 2 months. The sustainable pace.</p>
+            <a href="sms:9296273163" class="pcta">Get Five Classes</a>
+          </div>
+          <div class="pcard">
+            <p class="plabel">Best value</p>
+            <div class="pamount"><sup>$</sup>200</div>
+            <p class="pdesc">Ten classes, valid 3 months. For those who know.</p>
+            <a href="sms:9296273163" class="pcta">Get Ten Classes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="door">
+      <h2>"This week has<br />a few spots left."</h2>
+      <p>Text Miri. She'll tell you what's open and hold it while you decide.</p>
+      <a href="sms:9296273163" class="btn-terra">Text to Reserve — $25</a>
+      <a href="tel:9296273163" class="door-phone">or call 929-627-3163</a>
+    </section>
+
+    <footer>
+      <p>
+        MOOV by Miri &nbsp;·&nbsp; Wesley Hills, NY &nbsp;·&nbsp; 929-627-3163 &nbsp;·&nbsp;
+        @moovbymiri &nbsp;·&nbsp; 24-hr cancellation policy
+      </p>
+    </footer>
+
+    <script>
+      const words = document.querySelectorAll('.hero-word')
+      let current = 0
+      setInterval(() => {
+        words[current].classList.remove('active')
+        words[current].classList.add('exit')
+        setTimeout(() => {
+          words[current].classList.remove('exit')
+        }, 500)
+        current = (current + 1) % words.length
+        words[current].classList.add('active')
+      }, 2800)
+    </script>
+  </body>
+</html>

@@ -1,510 +1,605 @@
 import Image from 'next/image'
-import {
-  Button,
-  Navbar,
-  Footer,
-  EyebrowLabel,
-  DisplayHeading,
-  TrustBar,
-  TestimonialCard,
-  FounderQuote,
-  ArchImage,
-} from '@yoga/ui'
+import { Button, Footer, EyebrowLabel, TrustBar, TestimonialCard, HeroWordmark } from '@yoga/ui'
 
-import { SplitSection } from '@/components/split-section'
-import { CurtainReveal } from '@/components/curtain-reveal'
 import { ScrollReveal } from '@/components/scroll-reveal'
-import { HeroLine } from '@/components/hero-line'
-import { CounterRise } from '@/components/counter-rise'
 
-// ─── SMS link helpers ────────────────────────────────────────────────────────
+// ─── Link helpers ─────────────────────────────────────────────────────────────
 const SMS_HREF = 'sms:9296273163?body=Hi%20Miri%2C%20I%27d%20like%20to%20book%20a%20class'
 const TEL_HREF = 'tel:9296273163'
-const IG_HREF = 'https://instagram.com/moovbymiri'
 
-// ─── Page ────────────────────────────────────────────────────────────────────
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-
-      {/* ── Station 1: ARRIVAL ─────────────────────────────────── */}
-      <section className="relative min-h-screen overflow-hidden" id="arrival">
-        {/* Background studio photo — LCP element, no animation */}
-        <Image
-          src="/images/studio-full-view.jpg"
-          alt="MOOV by Miri studio interior — arched walls, warm light, and open floor"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-
-        {/* Two-layer hero overlay: dark scrim + warm amber bloom */}
-        <div className="absolute inset-0" style={{ background: 'var(--gradient-hero-scrim)' }} />
-        <div className="absolute inset-0" style={{ background: 'var(--gradient-hero-bloom)' }} />
-
-        {/* Bottom-anchored content — text grounded to floor, photo breathes above */}
-        <div className="relative flex min-h-screen flex-col items-center justify-end px-4 pb-20 text-center sm:pb-24">
-          {/* MOOV wordmark — breatheIn animation */}
-          <h1
-            className="font-serif font-medium italic text-[#FAF8F5]"
-            style={{
-              fontSize: 'clamp(3rem, 8vw, 6.5rem)',
-              lineHeight: '1.05',
-              animation: 'breatheIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both',
-            }}
-          >
-            MOOV
-          </h1>
-
-          {/* Horizontal rule — the choreographic pivot */}
-          <HeroLine />
-
-          {/* Orientation line */}
-          <p
-            className="mt-5 font-sans text-sm text-[#FAF8F5]/80 sm:text-base"
-            style={{
-              animation: 'fadeUp 500ms cubic-bezier(0.22, 1, 0.36, 1) both',
-              animationDelay: '900ms',
-            }}
-          >
-            Boutique pilates &amp; strength. Wesley Hills, NY.
-          </p>
-
-          {/* Primary CTA — links to SMS */}
-          <div
-            className="mt-8"
-            style={{
-              animation: 'fadeUp 400ms cubic-bezier(0.22, 1, 0.36, 1) both',
-              animationDelay: '1100ms',
-            }}
-          >
-            <a href={SMS_HREF}>
-              <Button size="md" className="px-6 py-3">
-                Text Miri to Reserve — $25
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Station 2: TRUST BAR ───────────────────────────────── */}
-      <TrustBar
-        headline="3 spots open this week."
-        subline="Text Miri to hold yours: 929-627-3163"
-        ctaHref={TEL_HREF}
-      />
-
-      {/* ── Station 3: THE HONEST MIRROR ───────────────────────── */}
-      <section className="bg-[#FAF8F5] py-16 sm:py-20" id="honest-mirror">
-        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <ScrollReveal variant="up-far">
-            <p
-              className="font-serif italic text-[#3A3632]"
-              style={{
-                fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
-                lineHeight: '1.2',
-              }}
-            >
-              You&rsquo;ve tried the alternatives.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal variant="up" delay={150}>
-            <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-[#756A5E] sm:text-lg">
-              The big gym where no one knows you. The group class where you&rsquo;re just a mat
-              number. The app that gave you a streak but not a body you trust. MOOV is ten women,
-              one room, and Miri. She&rsquo;ll remember which side is your tight one.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── Station 4: THRESHOLD ───────────────────────────────── */}
-      <section className="bg-[#F5F0EB] py-0" id="threshold">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SplitSection
-            weight="60-40"
-            crossAxisAlign="start"
-            imageSlot={
-              <div className="py-12 pr-0 md:py-16 md:pr-8">
-                <CurtainReveal
-                  src="/images/studio-arch-niche.jpg"
-                  alt="MOOV studio interior — arched niche with equipment and warm light"
-                  aspectRatio="landscape"
-                  curtainColor="#F5F0EB"
-                />
-              </div>
-            }
-            textSlot={
-              <div className="flex flex-col justify-center px-4 py-12 md:px-10 md:py-16">
-                <ScrollReveal variant="fade">
-                  <EyebrowLabel className="mb-4">studio</EyebrowLabel>
-                </ScrollReveal>
-                <ScrollReveal variant="up-far" delay={100}>
-                  <DisplayHeading as="h2" headingStyle="roman">
-                    10 students per class.
-                  </DisplayHeading>
-                </ScrollReveal>
-                <ScrollReveal variant="up-far" delay={200}>
-                  <DisplayHeading as="h2" headingStyle="italic" className="mt-2">
-                    Miri knows your name.
-                  </DisplayHeading>
-                </ScrollReveal>
-                <ScrollReveal variant="up" delay={300}>
-                  <p className="mt-6 font-sans text-base leading-relaxed text-[#756A5E] sm:text-lg">
-                    No class over ten. No two classes the same. Miri reads the room, adjusts the
-                    work, and remembers that you mentioned your left shoulder last time. This is
-                    what instruction looks like when the instructor isn&rsquo;t managing a crowd.
-                  </p>
-                </ScrollReveal>
-                <ScrollReveal variant="fade" delay={400}>
-                  <div className="mt-8">
-                    <a href={SMS_HREF}>
-                      <Button size="lg" className="px-8 py-4">
-                        Text Miri to Reserve — $25
-                      </Button>
-                    </a>
-                  </div>
-                </ScrollReveal>
-              </div>
-            }
-          />
-        </div>
-      </section>
-
-      {/* ── Station 5: VOICES ──────────────────────────────────── */}
-      <section className="bg-[#2A2623] py-16 sm:py-20" id="voices">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal variant="fade">
-            <EyebrowLabel color="neutral" className="mb-10 block text-center text-[#B5A899]">
-              from our members
-            </EyebrowLabel>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            <ScrollReveal variant="up-far" delay={0}>
-              <TestimonialCard
-                quote="I hadn't worked out in two years. Miri figured out where I was in about five minutes and never made me feel behind. I've been coming every week since January."
-                name="Sarah M."
-                detail="started January 2025"
-              />
-            </ScrollReveal>
-
-            <ScrollReveal variant="up-far" delay={120}>
-              <TestimonialCard
-                quote="Three months in. My posture changed. My lower back stopped hurting. I didn't expect results like this from a class this small."
-                name="Danielle K."
-                detail="Wesley Hills"
-              />
-            </ScrollReveal>
-
-            <ScrollReveal variant="up-far" delay={240}>
-              <TestimonialCard
-                quote="It's the only place I go where I'm not competing with myself. Miri's attention is total. You feel it."
-                name="Rachel T."
-                detail="coming since October"
-              />
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Station 6: THE SPACE ───────────────────────────────── */}
-      <section className="overflow-hidden bg-[#FAF8F5]" id="the-space">
-        {/* Full-bleed cinematic image */}
-        <div className="relative w-full" style={{ aspectRatio: '21/9' }}>
+      <main id="main-content">
+        {/* ── Station 1: ARRIVAL ─────────────────────────────────── */}
+        <section
+          className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
+          id="arrival"
+        >
+          {/* Background studio photo — LCP element */}
           <Image
             src="/images/studio-full-view.jpg"
-            alt="Full panoramic view of MOOV studio — arches, plants, and warm natural light"
+            alt="MOOV by Miri studio interior — arched walls, warm light, and open floor"
             fill
+            priority
             sizes="100vw"
-            className="object-cover"
-            loading="lazy"
+            className="parallax-image object-cover"
           />
-        </div>
 
-        {/* Left-aligned logistics block */}
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
-          <ScrollReveal variant="up">
-            <div className="max-w-lg">
-              <p
-                className="font-serif italic text-[#3A3632]"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
-              >
-                Come before you commit.
-              </p>
-              <p className="mt-4 font-sans text-base leading-relaxed text-[#756A5E]">
-                Drop-ins welcome. Bring a water bottle and socks with grip. Park in the lot off
-                Route 202. Miri will be there.
-              </p>
-              <div className="mt-4 flex flex-col gap-1 font-sans text-sm text-[#968A7B]">
-                <a
-                  href="https://maps.google.com/?q=Wesley+Hills+NY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underline inline-block text-[#574E44] transition-colors duration-150 hover:text-[#3A3632]"
-                >
-                  Wesley Hills, NY &rarr;
-                </a>
-                <a
-                  href={TEL_HREF}
-                  className="link-underline inline-block text-[#574E44] transition-colors duration-150 hover:text-[#3A3632]"
-                >
-                  929-627-3163 — Miri answers.
-                </a>
-              </div>
+          {/* VERDANT scrim — forest green overlay */}
+          <div
+            className="absolute inset-0"
+            style={{ background: 'var(--gradient-hero-verdant-scrim)' }}
+          />
+
+          {/* Centered content stack — locale → wordmark → rule → subtitle → CTA */}
+          <div className="relative z-10 flex flex-col items-center px-6 text-center">
+            {/* Location — above wordmark */}
+            <p
+              className="mb-7 font-sans font-medium uppercase text-[#FAF8F5]/55"
+              style={{
+                fontSize: '0.7rem',
+                letterSpacing: '0.28em',
+                opacity: 0,
+                animation: 'fadeUp 0.6s ease forwards 2.7s',
+              }}
+            >
+              Wesley Hills, NY
+            </p>
+
+            {/* MOOV wordmark — per-letter stagger */}
+            <HeroWordmark text="MOOV" />
+
+            {/* Terracotta rule */}
+            <div
+              className="mx-auto"
+              style={{
+                width: 'clamp(50px, 7vw, 90px)',
+                height: '1px',
+                background: 'rgba(194, 126, 96, 0.65)',
+                margin: '1.4rem auto',
+                transformOrigin: 'center',
+                transform: 'scaleX(0)',
+                animation: 'lineIn 0.7s ease forwards 1.75s',
+              }}
+            />
+
+            {/* Subtitle */}
+            <p
+              className="mb-11 font-sans font-normal uppercase text-[#FAF8F5]/70"
+              style={{
+                fontSize: '0.75rem',
+                letterSpacing: '0.2em',
+                opacity: 0,
+                animation: 'fadeUp 0.7s ease forwards 2.2s',
+              }}
+            >
+              Boutique pilates &amp; strength
+            </p>
+
+            {/* Primary CTA */}
+            <div style={{ opacity: 0, animation: 'fadeUp 0.6s ease forwards 1.8s' }}>
+              <Button href={SMS_HREF} variant="bone" size="md">
+                Text Miri to Reserve — $25
+              </Button>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* ── Station 7: THE PERSON ──────────────────────────────── */}
-      <section className="bg-[#F5F0EB] py-16 sm:py-20 lg:py-24" id="the-person">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            {/* Founder quote — editorial scale, left-aligned */}
-            <div className="order-2 lg:order-1 lg:pl-8">
-              <ScrollReveal variant="up-far">
-                <FounderQuote
-                  quote="I built this space for women who are done settling."
-                  attribution="— Miri, founder"
-                  size="editorial"
-                />
+        {/* ── Station 2: TRUST BAR ───────────────────────────────── */}
+        <TrustBar
+          headline="3 spots open this week."
+          subline="Text Miri to hold yours — 929-627-3163"
+          ctaHref={TEL_HREF}
+        />
+
+        {/* ── Station 3: HONEST MIRROR ───────────────────────────── */}
+        <section className="bg-[#F5F0E8] px-8 py-16 md:py-24 lg:py-36" id="honest-mirror">
+          <div className="mx-auto max-w-[820px]">
+            <ScrollReveal variant="fade">
+              <EyebrowLabel color="terra" className="mb-6 block">
+                03 — Honest Mirror
+              </EyebrowLabel>
+            </ScrollReveal>
+
+            <ScrollReveal variant="up-far">
+              <h2
+                className="font-serif italic text-[#2A2218]"
+                style={{
+                  fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
+                  fontWeight: 400,
+                  lineHeight: '1.18',
+                  marginBottom: '2rem',
+                }}
+              >
+                &ldquo;You&rsquo;ve tried
+                <br />
+                the alternatives.&rdquo;
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal variant="up" delay={150}>
+              <p
+                className="font-sans text-[#7A6C5E]"
+                style={{ fontSize: '1.05rem', lineHeight: '1.88', maxWidth: '580px' }}
+              >
+                The big gym where no one knows you. The boutique where you can&rsquo;t get a spot.
+                The app that doesn&rsquo;t move your body the way you need it to. You already know
+                what doesn&rsquo;t work. This is what does.
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ── Station 4: THRESHOLD ───────────────────────────────── */}
+        <section id="threshold">
+          <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] md:min-h-[600px]">
+            {/* Photo — left 3fr */}
+            <div className="relative min-h-[300px] overflow-hidden md:min-h-0">
+              <Image
+                src="/images/studio-arch-niche.jpg"
+                alt="MOOV studio interior — arched niche with equipment and warm light"
+                fill
+                sizes="(max-width: 768px) 100vw, 60vw"
+                className="object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Text — right 2fr, stone bg */}
+            <div className="flex flex-col justify-center bg-[#E8DDD0] px-6 py-12 md:px-16 md:py-20">
+              <ScrollReveal variant="fade">
+                <EyebrowLabel color="terra" className="mb-6 block">
+                  04 — Threshold
+                </EyebrowLabel>
               </ScrollReveal>
-              <ScrollReveal variant="fade" delay={200}>
-                <p className="mt-6 max-w-md font-sans text-base leading-relaxed text-[#756A5E]">
-                  Miri has trained women in small groups for over a decade. She opened MOOV because
-                  she wanted a room where every woman in it would feel like the class was made for
-                  her. Most of the time, it is.
+
+              <ScrollReveal variant="up-far" delay={100}>
+                <h2
+                  className="font-serif italic text-[#2A2218]"
+                  style={{
+                    fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+                    fontWeight: 400,
+                    lineHeight: '1.2',
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  10 students per class.
+                  <br />
+                  Miri knows your name.
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal variant="up" delay={200}>
+                <p
+                  className="font-sans text-[#7A6C5E]"
+                  style={{ fontSize: '1rem', lineHeight: '1.82', marginBottom: '2.5rem' }}
+                >
+                  This isn&rsquo;t a drop-in gym. It&rsquo;s a studio built around you. Every class
+                  is capped. Every student is seen. You&rsquo;re not a member number.
                 </p>
               </ScrollReveal>
+
               <ScrollReveal variant="fade" delay={300}>
+                <Button href={SMS_HREF} variant="forest" size="md" className="self-start">
+                  Reserve Your Spot — $25
+                </Button>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Station 5: VOICES ──────────────────────────────────── */}
+        <section className="bg-[#1A2E1A] px-8 py-16 md:py-20 lg:py-32" id="voices">
+          <div className="mx-auto max-w-[1160px]">
+            <ScrollReveal variant="fade">
+              <EyebrowLabel className="mb-6 block text-[#C27E60]/85">05 — Voices</EyebrowLabel>
+            </ScrollReveal>
+
+            <ScrollReveal variant="up-far">
+              <h2
+                className="font-serif italic text-[#F5F0E8]"
+                style={{
+                  fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                  fontWeight: 400,
+                  marginBottom: '3.5rem',
+                }}
+              >
+                &ldquo;Real members. Real results.&rdquo;
+              </h2>
+            </ScrollReveal>
+
+            {/* 1-col → 3-col (skip 2-col to avoid orphaned card at sm) */}
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+              <ScrollReveal variant="up-far" delay={0}>
+                <TestimonialCard
+                  variant="dark"
+                  quote="I've tried every boutique studio in Rockland. MOOV is the only one where I feel genuinely known. Miri remembers everything."
+                  name="Sarah M."
+                />
+              </ScrollReveal>
+
+              <ScrollReveal variant="up-far" delay={120}>
+                <TestimonialCard
+                  variant="dark"
+                  quote="Three months in and my posture is transformed. The small class size means Miri actually corrects your form. It matters."
+                  name="Danielle K."
+                />
+              </ScrollReveal>
+
+              <ScrollReveal variant="up-far" delay={240}>
+                <TestimonialCard
+                  variant="dark"
+                  quote="I was nervous about pilates. Miri made me feel capable from day one. I've been coming every week for a year."
+                  name="Rachel T."
+                />
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal variant="fade" delay={350}>
+              <div className="mt-12 text-center">
+                <Button href={SMS_HREF} variant="bone" size="md">
+                  Join them — $25
+                </Button>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ── Station 6: THE SPACE ───────────────────────────────── */}
+        <section id="the-space">
+          {/* Cinematic full-bleed studio photo at 21:9 */}
+          <div className="relative w-full overflow-hidden" style={{ aspectRatio: '21/9' }}>
+            <Image
+              src="/images/studio-mats-wide.jpg"
+              alt="MOOV by Miri — the studio floor, warm light, and open space to move"
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+              loading="lazy"
+            />
+            {/* Subtle forest scrim for depth */}
+            <div className="absolute inset-0 bg-[#1A2E1A]/25" />
+          </div>
+
+          {/* Logistics grid below photo */}
+          <div className="bg-[#F5F0E8] px-8 py-12 md:px-16 md:py-16">
+            <div className="mx-auto max-w-[820px]">
+              <ScrollReveal variant="fade">
+                <EyebrowLabel color="terra" className="mb-8 block">
+                  06 — The Space
+                </EyebrowLabel>
+              </ScrollReveal>
+
+              <ScrollReveal variant="up-far">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+                  <div>
+                    <p
+                      className="font-serif italic text-[#2A2218]"
+                      style={{ fontSize: '1.25rem', fontWeight: 400, marginBottom: '0.5rem' }}
+                    >
+                      Location
+                    </p>
+                    <p
+                      className="font-sans text-[#7A6C5E]"
+                      style={{ fontSize: '0.9rem', lineHeight: '1.7' }}
+                    >
+                      Wesley Hills, NY
+                      <br />
+                      20 min from Mahwah Bridge
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      className="font-serif italic text-[#2A2218]"
+                      style={{ fontSize: '1.25rem', fontWeight: 400, marginBottom: '0.5rem' }}
+                    >
+                      Schedule
+                    </p>
+                    <p
+                      className="font-sans text-[#7A6C5E]"
+                      style={{ fontSize: '0.9rem', lineHeight: '1.7' }}
+                    >
+                      Mon – Sat
+                      <br />6 am – 7 pm
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      className="font-serif italic text-[#2A2218]"
+                      style={{ fontSize: '1.25rem', fontWeight: 400, marginBottom: '0.5rem' }}
+                    >
+                      Class Size
+                    </p>
+                    <p
+                      className="font-sans text-[#7A6C5E]"
+                      style={{ fontSize: '0.9rem', lineHeight: '1.7' }}
+                    >
+                      10 students max.
+                      <br />
+                      Every class. Always.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Station 7: THE PERSON ──────────────────────────────── */}
+        {/* TODO: Restore 2-column grid (portrait left, quote right) once Miri portrait photography is ready */}
+        <section className="bg-[#F5F0E8] px-8 py-16 md:py-24 lg:py-32" id="the-person">
+          <div className="mx-auto max-w-[680px] text-center">
+            <ScrollReveal variant="fade">
+              <EyebrowLabel color="terra" className="mb-8 block">
+                07 — The Person
+              </EyebrowLabel>
+            </ScrollReveal>
+
+            <ScrollReveal variant="up-far" delay={100}>
+              <blockquote>
+                <p
+                  className="font-serif italic text-[#2A2218]"
+                  style={{
+                    fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                    fontWeight: 400,
+                    lineHeight: '1.3',
+                    marginBottom: '2rem',
+                  }}
+                >
+                  &ldquo;I built MOOV because I wanted to train people the way I wanted to be
+                  trained. Not as a number. As a person.&rdquo;
+                </p>
+                <footer>
+                  <cite
+                    className="font-sans not-italic text-[#C27E60] uppercase"
+                    style={{ fontSize: '0.65rem', letterSpacing: '0.18em' }}
+                  >
+                    — Miri, Founder &amp; Instructor
+                  </cite>
+                </footer>
+              </blockquote>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade" delay={250}>
+              <Button href={SMS_HREF} variant="forest" size="md" className="mt-10">
+                Train with Miri — $25
+              </Button>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ── Station 8: THE PRICE ───────────────────────────────── */}
+        <section className="bg-[#F5F0E8] px-8 py-16 md:py-20 lg:py-32" id="pricing">
+          <div className="mx-auto max-w-[1100px]">
+            <ScrollReveal variant="fade">
+              <EyebrowLabel color="terra" className="mb-6 block">
+                08 — The Price
+              </EyebrowLabel>
+            </ScrollReveal>
+
+            <ScrollReveal variant="up-far">
+              <h2
+                className="font-serif text-[#2A2218]"
+                style={{
+                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  fontWeight: 400,
+                  marginBottom: '4rem',
+                }}
+              >
+                Simple, honest pricing.
+              </h2>
+            </ScrollReveal>
+
+            {/* 1-col → 3-col (skip 2-col orphan) */}
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+              {/* Drop-in */}
+              <ScrollReveal variant="up-far" delay={0}>
+                <div
+                  className="rounded-[1.75rem] bg-white"
+                  style={{ border: '1.5px solid #B8A898', padding: '2.75rem 2.25rem' }}
+                >
+                  <p
+                    className="font-sans font-semibold uppercase text-[#C27E60]"
+                    style={{ fontSize: '0.6rem', letterSpacing: '0.22em', marginBottom: '1.5rem' }}
+                  >
+                    Start here
+                  </p>
+                  <div
+                    className="font-serif text-[#2A2218]"
+                    style={{
+                      fontSize: '4.5rem',
+                      fontWeight: 400,
+                      lineHeight: 1,
+                      marginBottom: '0.5rem',
+                    }}
+                  >
+                    <sup className="align-super" style={{ fontSize: '1.75rem' }}>
+                      $
+                    </sup>
+                    25
+                  </div>
+                  <p
+                    className="font-sans text-[#7A6C5E]"
+                    style={{ fontSize: '0.875rem', lineHeight: '1.65', marginBottom: '2rem' }}
+                  >
+                    Single class, no expiry. No commitment. Come once and see why people stay.
+                  </p>
+                  <Button href={SMS_HREF} variant="forest" size="sm" className="w-full">
+                    Reserve a Single
+                  </Button>
+                </div>
+              </ScrollReveal>
+
+              {/* 5-class pack — popular, sage border */}
+              <ScrollReveal variant="up-far" delay={120}>
+                <div
+                  className="rounded-[1.75rem] bg-white"
+                  style={{ border: '1.5px solid #6B8B4E', padding: '2.75rem 2.25rem' }}
+                >
+                  <p
+                    className="font-sans font-semibold uppercase text-[#C27E60]"
+                    style={{ fontSize: '0.6rem', letterSpacing: '0.22em', marginBottom: '1.5rem' }}
+                  >
+                    Most popular
+                  </p>
+                  <div
+                    className="font-serif text-[#2A2218]"
+                    style={{
+                      fontSize: '4.5rem',
+                      fontWeight: 400,
+                      lineHeight: 1,
+                      marginBottom: '0.5rem',
+                    }}
+                  >
+                    <sup className="align-super" style={{ fontSize: '1.75rem' }}>
+                      $
+                    </sup>
+                    115
+                  </div>
+                  <p
+                    className="font-sans text-[#7A6C5E]"
+                    style={{ fontSize: '0.875rem', lineHeight: '1.65', marginBottom: '2rem' }}
+                  >
+                    Five classes, valid 2 months. The pace most members find sustainable.
+                  </p>
+                  <Button href={SMS_HREF} variant="forest" size="sm" className="w-full">
+                    Get Five Classes
+                  </Button>
+                </div>
+              </ScrollReveal>
+
+              {/* 10-class pack */}
+              <ScrollReveal variant="up-far" delay={240}>
+                <div
+                  className="rounded-[1.75rem] bg-white"
+                  style={{ border: '1.5px solid #B8A898', padding: '2.75rem 2.25rem' }}
+                >
+                  <p
+                    className="font-sans font-semibold uppercase text-[#C27E60]"
+                    style={{ fontSize: '0.6rem', letterSpacing: '0.22em', marginBottom: '1.5rem' }}
+                  >
+                    Best value
+                  </p>
+                  <div
+                    className="font-serif text-[#2A2218]"
+                    style={{
+                      fontSize: '4.5rem',
+                      fontWeight: 400,
+                      lineHeight: 1,
+                      marginBottom: '0.5rem',
+                    }}
+                  >
+                    <sup className="align-super" style={{ fontSize: '1.75rem' }}>
+                      $
+                    </sup>
+                    200
+                  </div>
+                  <p
+                    className="font-sans text-[#7A6C5E]"
+                    style={{ fontSize: '0.875rem', lineHeight: '1.65', marginBottom: '2rem' }}
+                  >
+                    Ten classes, valid 3 months. For those who know they&rsquo;re in.
+                  </p>
+                  <Button href={SMS_HREF} variant="forest" size="sm" className="w-full">
+                    Get Ten Classes
+                  </Button>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Station 9: INSTAGRAM PROOF ─────────────────────────── */}
+        <section className="bg-[#F5F0E8] px-8 py-16 md:py-20 lg:py-28" id="instagram-proof">
+          <div className="mx-auto max-w-[1100px]">
+            <ScrollReveal variant="fade">
+              <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <EyebrowLabel color="terra">09 — Instagram Proof</EyebrowLabel>
                 <a
-                  href={IG_HREF}
+                  href="https://instagram.com/moovbymiri"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-underline mt-6 inline-flex items-center gap-2 font-sans text-sm font-medium text-[#556B2F] transition-colors duration-150 hover:text-[#455825]"
+                  aria-label="Follow MOOV by Miri on Instagram (opens in new tab)"
+                  className="font-sans text-[#2D4A2E] uppercase transition-colors duration-150 hover:text-[#C27E60] focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[#2D4A2E] focus-visible:ring-offset-2"
+                  style={{ fontSize: '0.65rem', letterSpacing: '0.18em' }}
                 >
-                  @moovbymiri
-                  <span aria-hidden="true">&rarr;</span>
+                  @moovbymiri →
                 </a>
-              </ScrollReveal>
-            </div>
-
-            {/* Miri portrait — placeholder for now */}
-            <div className="order-1 lg:order-2">
-              <ScrollReveal variant="right">
-                <ArchImage
-                  src="/images/studio-arch-detail.jpg"
-                  alt="Miri — founder of MOOV by Miri"
-                  aspectRatio="portrait"
-                />
-              </ScrollReveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Station 8: THE PRICE ───────────────────────────────── */}
-      <section className="bg-[#2A2623] py-16 sm:py-20" id="pricing">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Pre-header */}
-          <ScrollReveal variant="fade">
-            <p className="mb-12 text-center font-sans text-sm text-[#D4C9BD]">
-              Simple pricing. No memberships. No contracts. Show up.
-            </p>
-          </ScrollReveal>
-
-          {/* Horizontal rule separator */}
-          <div className="mx-auto mb-12 max-w-4xl border-t border-[#574E44]" />
-
-          {/* Three pricing declarations */}
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
-            {/* Single class */}
-            <div className="text-center">
-              <ScrollReveal variant="fade">
-                <span className="font-sans text-xs font-semibold uppercase tracking-widest text-[#C27E60]">
-                  Start here
-                </span>
-              </ScrollReveal>
-              <p
-                className="mt-3 font-serif font-medium text-[#FAF8F5]"
-                style={{ fontSize: 'clamp(3.5rem, 7vw, 5rem)', lineHeight: '1.0' }}
-              >
-                <CounterRise value={25} floor={18} />
-              </p>
-              <p className="mt-4 font-sans text-base text-[#D4C9BD]">One class. No commitment.</p>
-            </div>
-
-            {/* 5-class pack */}
-            <div className="text-center">
-              <ScrollReveal variant="fade" delay={120}>
-                <span className="font-sans text-xs font-semibold uppercase tracking-widest text-[#C27E60]">
-                  Most popular
-                </span>
-              </ScrollReveal>
-              <p
-                className="mt-3 font-serif font-medium text-[#FAF8F5]"
-                style={{ fontSize: 'clamp(3.5rem, 7vw, 5rem)', lineHeight: '1.0' }}
-              >
-                <CounterRise value={115} floor={90} />
-              </p>
-              <p className="mt-4 font-sans text-base text-[#D4C9BD]">
-                Five classes. Two months to use them.
-              </p>
-            </div>
-
-            {/* 10-class pack */}
-            <div className="text-center">
-              <ScrollReveal variant="fade" delay={240}>
-                <span className="font-sans text-xs font-semibold uppercase tracking-widest text-[#968A7B]">
-                  Best value
-                </span>
-              </ScrollReveal>
-              <p
-                className="mt-3 font-serif font-medium text-[#FAF8F5]"
-                style={{ fontSize: 'clamp(3.5rem, 7vw, 5rem)', lineHeight: '1.0' }}
-              >
-                <CounterRise value={200} floor={160} />
-              </p>
-              <p className="mt-4 font-sans text-base text-[#D4C9BD]">
-                Ten classes. Three months. Make it yours.
-              </p>
-            </div>
-          </div>
-
-          {/* Payment + policy */}
-          <div className="mt-12 text-center">
-            <p className="font-sans text-sm text-[#D4C9BD]">
-              Payment by Venmo or Zelle. Miri confirms your spot within a few hours.
-            </p>
-            <p className="mt-2 font-sans text-xs text-[#968A7B]">
-              Your spot is saved once payment is sent. 24-hour cancellation policy.
-            </p>
-            <div className="mt-6">
-              <a
-                href={TEL_HREF}
-                className="link-underline font-sans text-sm text-[#D4C9BD] transition-colors duration-150 hover:text-[#FAF8F5]"
-              >
-                Text Miri to Book — 929-627-3163
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Station 9: INSTAGRAM PROOF ─────────────────────────── */}
-      <section className="bg-[#FAF8F5] py-12 sm:py-16" id="instagram">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-            <ScrollReveal variant="fade" delay={0}>
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <Image
-                  src="/images/studio-mats-wide.jpg"
-                  alt="Studio mats laid out for class"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
               </div>
             </ScrollReveal>
-            <ScrollReveal variant="fade" delay={100}>
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <Image
-                  src="/images/studio-mats-angle.jpg"
-                  alt="Studio angle with equipment"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+
+            {/* 3-square grid — replace with actual Instagram post crops */}
+            <div className="grid grid-cols-3 gap-3 md:gap-4">
+              {(
+                [
+                  {
+                    src: '/images/studio-mats-angle.jpg',
+                    alt: 'MOOV studio — mats and open floor',
+                  },
+                  {
+                    src: '/images/studio-arch-detail.jpg',
+                    alt: 'MOOV studio — arch and warm light',
+                  },
+                  { src: '/images/studio-mats-wide.jpg', alt: 'MOOV studio — wide view' },
+                ] as { src: string; alt: string }[]
+              ).map(({ src, alt }, i) => (
+                <ScrollReveal key={src} variant="up-far" delay={i * 80}>
+                  <div className="relative aspect-square overflow-hidden rounded-lg">
+                    <Image
+                      src={src}
+                      alt={alt}
+                      fill
+                      sizes="(max-width: 768px) 33vw, 350px"
+                      className="object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Station 10: THE DOOR ───────────────────────────────── */}
+        <section
+          className="px-8 py-16 text-center md:py-24 lg:py-36"
+          id="the-door"
+          style={{ background: 'var(--gradient-forest)' }}
+        >
+          <div className="mx-auto max-w-[460px]">
+            <ScrollReveal variant="up-far">
+              <h2
+                className="font-serif italic text-[#F5F0E8]"
+                style={{
+                  fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
+                  fontWeight: 400,
+                  marginBottom: '1.25rem',
+                }}
+              >
+                &ldquo;This week has a few spots left.&rdquo;
+              </h2>
             </ScrollReveal>
+
             <ScrollReveal variant="fade" delay={200}>
-              <div className="aspect-square overflow-hidden rounded-lg max-sm:col-span-2">
-                <Image
-                  src="/images/studio-arch-detail.jpg"
-                  alt="Studio arch detail with warm textures"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+              <p
+                className="font-sans text-[#FAF8F5]/[0.68]"
+                style={{ fontSize: '0.9rem', lineHeight: '1.75', marginBottom: '2.75rem' }}
+              >
+                Text Miri. She&rsquo;ll tell you what&rsquo;s open and hold it while you decide.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade" delay={350}>
+              <Button href={SMS_HREF} variant="bone" size="lg">
+                Text to Reserve — $25
+              </Button>
             </ScrollReveal>
           </div>
-          <div className="mt-4 text-center">
-            <a
-              href={IG_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline font-sans text-sm text-[#968A7B] transition-colors duration-150 hover:text-[#574E44]"
-            >
-              More at @moovbymiri
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Station 10: THE DOOR ───────────────────────────────── */}
-      <section
-        className="py-16 sm:py-20"
-        id="the-door"
-        style={{ background: 'var(--gradient-olive)' }}
-      >
-        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <ScrollReveal variant="up-far">
-            <p
-              className="font-serif italic text-[#FAF8F5]"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', lineHeight: '1.2' }}
-            >
-              This week has a few spots left.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal variant="fade" delay={200}>
-            <p className="mt-4 font-sans text-base text-[#FAF8F5]/70">
-              Text Miri. She&rsquo;ll tell you what&rsquo;s open and hold it while you decide.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal variant="fade" delay={350}>
-            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              {/* Primary: cream-fill CTA */}
-              <a href={SMS_HREF} className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="w-full bg-[#FAF8F5] px-8 py-4 text-[#556B2F] hover:bg-[#FAF8F5]/90 sm:w-auto"
-                >
-                  Text to Reserve — $25
-                </Button>
-              </a>
-
-              {/* Secondary: phone */}
-              <a
-                href={TEL_HREF}
-                className="link-underline font-sans text-sm text-[#FAF8F5]/80 transition-colors duration-150 hover:text-[#FAF8F5]"
-              >
-                Or call: 929-627-3163
-              </a>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal variant="fade" delay={450}>
-            <a
-              href={IG_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block font-sans text-xs text-[#FAF8F5]/50 transition-colors duration-150 hover:text-[#FAF8F5]/80"
-            >
-              DM @moovbymiri
-            </a>
-          </ScrollReveal>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <Footer />
     </>

@@ -85,6 +85,8 @@ export const fontSize = {
   display: ['clamp(3rem, 8vw, 6.5rem)', { lineHeight: '1.05' }],
   // Fluid numeric scale — for pricing declarations in Station 6
   numeric: ['clamp(3.5rem, 7vw, 5rem)', { lineHeight: '1.0' }],
+  // Hero wordmark scale — for HeroWordmark component only
+  hero: ['clamp(5rem, 12vw, 9rem)', { lineHeight: '1.0' }],
 } as const
 
 export const fontFamily = {

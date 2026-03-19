@@ -5,48 +5,60 @@
   --font-serif: var(--font-serif);
 }
 
-/* ─── Gradient tokens ─────────────────────────────────────── */
+/* ─── VERDANT color tokens ─────────────────────────────────── */
 :root {
-  --gradient-warm: linear-gradient(160deg, #faf3e8 0%, #faf8f5 60%);
-  --gradient-olive: linear-gradient(135deg, #556b2f 0%, #374520 100%);
-  /* Two-layer hero: dark scrim + warm amber bloom */
-  --gradient-hero-scrim: linear-gradient(
-    to top,
-    rgba(42, 38, 35, 0.52) 0%,
-    rgba(42, 38, 35, 0.28) 40%,
-    rgba(42, 38, 35, 0.1) 70%,
-    transparent 100%
+  --bone: #f5f0e8; /* warm parchment background */
+  --cream: #faf8f5; /* near-white surface (cards, light overlays) */
+  --white: #ffffff; /* pure white (pricing cards) */
+  --stone: #e8ddd0; /* warm stone divider / surface */
+  --bark: #2a2218; /* deep warm black for primary text */
+  --forest: #2d4a2e; /* forest green — primary action */
+  --forest-dk: #1a2e1a; /* dark forest — trust bar, voices bg */
+  --forest-hover: rgba(45, 74, 46, 0.88); /* forest at 88% for hover states */
+  --sage: #6b8b4e; /* sage green — accent, popular card border */
+  --terra: #c27e60; /* terracotta — accent, eyebrows, labels */
+  --ink: #1c1512; /* near-black — footer */
+  --mid: #7a6c5e; /* warm mid-tone — body text */
+
+  /* Hero overlay: forest green, light in middle, darker at top and bottom */
+  --gradient-hero-verdant-scrim: linear-gradient(
+    180deg,
+    rgba(26, 46, 26, 0.68) 0%,
+    rgba(26, 46, 26, 0.12) 52%,
+    rgba(26, 46, 26, 0.5) 100%
   );
-  --gradient-hero-bloom: radial-gradient(
-    ellipse at 20% 100%,
-    rgba(194, 126, 96, 0.22) 0%,
-    transparent 60%
-  );
+  /* Forest gradient for The Door */
+  --gradient-forest: linear-gradient(155deg, #2d4a2e 0%, #1a2e1a 100%);
 }
 
 /* ─── Keyframes ───────────────────────────────────────────── */
 
-/* Hero wordmark entrance */
-@keyframes breatheIn {
+/* VERDANT: per-letter wordmark entrance — scale(0.8)+translateY(8px) → scale(1) */
+@keyframes letterIn {
   from {
     opacity: 0;
-    transform: scale(0.97);
+    transform: scale(0.8) translateY(8px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
 }
 
-/* Hero line extension */
-@keyframes lineExtend {
+.wordmark-letter {
+  opacity: 0;
+  transform: scale(0.8) translateY(8px);
+  animation: letterIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--stagger-delay, 0s);
+}
+
+/* Hero terracotta rule line */
+@keyframes lineIn {
   from {
     transform: scaleX(0);
-    opacity: 0;
   }
   to {
     transform: scaleX(1);
-    opacity: 1;
   }
 }
 
@@ -54,47 +66,12 @@
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Marquee */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-/* Legacy compat */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out both;
 }
 
 /* ─── Scroll reveal variants ─────────────────────────────── */
@@ -182,10 +159,11 @@
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
 
-  .animate-fade-in-up {
+  .wordmark-letter {
     animation: none;
     opacity: 1;
     transform: none;
@@ -203,51 +181,6 @@
 
   .reveal-element.revealed {
     opacity: 1;
-  }
-
-  @keyframes breatheIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes lineExtend {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes marquee-right {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(0);
-    }
   }
 
   .link-underline::after {

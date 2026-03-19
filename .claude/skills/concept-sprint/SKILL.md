@@ -27,6 +27,20 @@ Read the following to build the brief:
 **Landing page anatomy (if applicable):**
 !`cat .claude/rules/landing-page-anatomy.md`
 
+## Step 1.5: Incorporate Design Research (if available)
+
+If the user has already run `/ui-ux-pro-max --design-system`, incorporate its output as research context:
+
+- Style recommendation → starting point for creative direction
+- Color palette → compare against existing @yoga/tokens colors
+- Typography pairing → compare against existing fontFamily tokens
+- Landing page pattern → feed to section planning
+
+If research hasn't been done yet, run it now:
+!`python3 .claude/skills/ui-ux-pro-max/scripts/search.py "wellness boutique pilates elegant warm" --design-system -p "MOOV by Miri"`
+
+The design system output is a research INPUT, not the final design. The concept sprint team makes brand-specific decisions using this data as a starting menu.
+
 ## Step 2: Write the Design Brief
 
 Using the context above, create a design brief that includes:

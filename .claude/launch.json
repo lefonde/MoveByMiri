@@ -4,9 +4,21 @@
     {
       "name": "web",
       "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "cd apps\\web && npx next dev"],
-      "port": 3001,
+      "runtimeArgs": ["/c", "cd apps\\web && pnpm exec next dev --turbo"],
+      "port": 3000,
       "autoPort": true
+    },
+    {
+      "name": "sketches",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "npx --yes serve apps\\web\\public\\sketches -p 3002 --no-clipboard"],
+      "port": 3002
+    },
+    {
+      "name": "web-static",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "npx --yes serve apps\\web\\out -p 3006 --no-clipboard"],
+      "port": 3006
     },
     {
       "name": "storybook",
