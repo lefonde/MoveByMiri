@@ -40,7 +40,7 @@ export function Footer({ className = '' }: FooterProps) {
           Privacy
         </a>
         <span aria-hidden="true">·</span>
-        <span>© 2025 MOOV by Miri</span>
+        <span>© {new Date().getFullYear()} MOOV by Miri</span>
       </p>
     </footer>
   )

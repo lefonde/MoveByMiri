@@ -5,6 +5,12 @@ import { ScrollReveal } from '@/components/scroll-reveal'
 
 // ─── Link helpers ─────────────────────────────────────────────────────────────
 const SMS_HREF = 'sms:9296273163?body=Hi%20Miri%2C%20I%27d%20like%20to%20book%20a%20class'
+const SMS_HREF_SINGLE =
+  'sms:9296273163?body=Hi%20Miri%2C%20I%27d%20like%20to%20book%20a%20single%20class'
+const SMS_HREF_FIVE =
+  'sms:9296273163?body=Hi%20Miri%2C%20I%27d%20like%20to%20get%20the%205-class%20pack'
+const SMS_HREF_TEN =
+  'sms:9296273163?body=Hi%20Miri%2C%20I%27d%20like%20to%20get%20the%2010-class%20pack'
 const TEL_HREF = 'tel:9296273163'
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -66,21 +72,21 @@ export default function Home() {
               }}
             />
 
-            {/* Subtitle */}
+            {/* Subtitle — appears before CTA so context precedes the ask */}
             <p
               className="mb-11 font-sans font-normal uppercase text-[#FAF8F5]/70"
               style={{
                 fontSize: '0.75rem',
                 letterSpacing: '0.2em',
                 opacity: 0,
-                animation: 'fadeUp 0.7s ease forwards 2.2s',
+                animation: 'fadeUp 0.7s ease forwards 1.8s',
               }}
             >
               Boutique pilates &amp; strength
             </p>
 
-            {/* Primary CTA */}
-            <div style={{ opacity: 0, animation: 'fadeUp 0.6s ease forwards 1.8s' }}>
+            {/* Primary CTA — after subtitle so visitor has context before the ask */}
+            <div style={{ opacity: 0, animation: 'fadeUp 0.6s ease forwards 2.2s' }}>
               <Button href={SMS_HREF} variant="bone" size="md">
                 Text Miri to Reserve — $25
               </Button>
@@ -427,7 +433,7 @@ export default function Home() {
                   >
                     Single class, no expiry. No commitment. Come once and see why people stay.
                   </p>
-                  <Button href={SMS_HREF} variant="forest" size="sm" className="w-full">
+                  <Button href={SMS_HREF_SINGLE} variant="forest" size="sm" className="w-full">
                     Reserve a Single
                   </Button>
                 </div>
@@ -465,7 +471,7 @@ export default function Home() {
                   >
                     Five classes, valid 2 months. The pace most members find sustainable.
                   </p>
-                  <Button href={SMS_HREF} variant="forest" size="sm" className="w-full">
+                  <Button href={SMS_HREF_FIVE} variant="forest" size="sm" className="w-full">
                     Get Five Classes
                   </Button>
                 </div>
@@ -503,7 +509,7 @@ export default function Home() {
                   >
                     Ten classes, valid 3 months. For those who know they&rsquo;re in.
                   </p>
-                  <Button href={SMS_HREF} variant="forest" size="sm" className="w-full">
+                  <Button href={SMS_HREF_TEN} variant="forest" size="sm" className="w-full">
                     Get Ten Classes
                   </Button>
                 </div>
@@ -594,7 +600,7 @@ export default function Home() {
 
             <ScrollReveal variant="fade" delay={350}>
               <Button href={SMS_HREF} variant="bone" size="lg">
-                Text to Reserve — $25
+                Text Miri to Reserve — $25
               </Button>
             </ScrollReveal>
           </div>
